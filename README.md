@@ -1,144 +1,92 @@
-# 🍬 Nassau Candy Product Line Profitability & Margin Analysis
-
+# 🍬 Nassau Candy Product Profitability Analytics Dashboard
 
 ## 📌 Project Overview
 
-This project analyzes product profitability and margin performance for Nassau Candy Distributor using data analytics and interactive visualization.
+An interactive Business Intelligence dashboard designed to analyze product profitability, revenue contribution, gross margin performance, and product-level business risks.
 
-The objective is to identify profitable products, underperforming divisions, cost inefficiencies, and products that require pricing optimization.
-
-
----
-
-
-## 🎯 Business Problem
-
-Sales volume alone does not define business success.
-
-Some products:
-- Generate high revenue but low margins
-- Consume excessive operational cost
-- Reduce overall profitability
-
-The goal is to build a data-driven decision system for product portfolio optimization.
-
+Built using Python and Streamlit.
 
 ---
 
+## 🌐 Live Dashboard
 
-## 📊 Key Performance Indicators (KPIs)
-
-The analysis focuses on:
-
-- Gross Margin %
-- Profit Per Unit
-- Revenue Contribution %
-- Profit Contribution %
-- Cost Ratio %
-
+https://dh6auctctpqs4vzwqtfurv.streamlit.app/
 
 ---
 
+## 🎯 Business Objective
 
-## 🔍 Analysis Performed
+The goal of this project is to identify:
 
-✔ Product Profitability Ranking
-
-✔ High Sales Low Margin Detection
-
-✔ Division Performance Analysis
-
-✔ Cost vs Margin Diagnostics
-
-✔ Pareto 80/20 Profit Contribution Analysis
-
-✔ Margin Risk Classification
-
+- High revenue products
+- High profit products
+- Low margin risk products
+- Product contribution patterns
+- Pricing optimization opportunities
 
 ---
 
-
-## 📈 Dashboard Features
-
-Interactive Streamlit dashboard includes:
-
-- Revenue KPI Cards
-- Profit KPI Cards
-- Date Filter
-- Division Filter
-- Product Search
-- Margin Threshold Slider
-- Product Leaderboard
-- Cost Diagnostic Charts
-- Pareto Analysis
-
-
----
-
-
-## 🛠️ Technologies Used
+## 🛠️ Tools & Technologies
 
 - Python
 - Pandas
-- NumPy
-- Matplotlib
 - Plotly
 - Streamlit
-
-
----
-
-
-## 📂 Project Structure
-
-
-Nassau_Candy_Profitability_Project
-
-│
-├── Data
-│   └── final_nassau_dashboard_data.csv
-
-├── Dashboard
-│   └── app.py
-
-├── Notebook
-│   └── EDA_Analysis.ipynb
-
-├── requirements.txt
-
-└── README.md
-
-
+- Data Analysis
+- Business Intelligence
 
 ---
 
+## 📊 Dashboard Features
 
-## 🚀 Run Dashboard
+### Business KPI Overview
 
-Install dependencies:
+Tracks:
 
-pip install -r requirements.txt
+- Total Revenue
+- Gross Profit
+- Average Margin %
+- Units Sold
 
 
-Run Streamlit:
+### Division Performance Analysis
 
-streamlit run Dashboard/app.py
+Compares revenue and profitability across product divisions.
+
+
+### Product Profitability Ranking
+
+Identifies best performing products based on gross profit.
+
+
+### Cost vs Margin Diagnostics
+
+Analyzes relationship between:
+
+- Manufacturing cost
+- Revenue generation
+- Profit margin risk
+
+
+### Pareto 80/20 Analysis
+
+Identifies products responsible for the majority of profit contribution.
 
 
 ---
-
 
 ## 💡 Business Recommendations
 
-- Promote high margin products
-- Optimize pricing for low-margin products
-- Reduce cost-heavy products
-- Improve inventory decisions using profitability insights
+- Prioritize high-margin products
+- Review pricing strategy for low-margin items
+- Optimize product portfolio
+- Improve inventory decisions
 
 
 ---
 
+## Developed By
 
-## Conclusion
+Deepanshu Bisht
 
-This project provides a complete profitability intelligence system that helps Nassau Candy Distributor make informed decisions about pricing, products, and operational efficiency.
+Domain: Data Analytics | Business Intelligence

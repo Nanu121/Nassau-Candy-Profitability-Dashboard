@@ -47,6 +47,35 @@ st.markdown(
        visibility:hidden;
     }
 
+    .insight-card{
+
+    background:linear-gradient(
+    135deg,
+    #le293b,
+    #0f172a
+    );
+
+    padding:25px;
+
+    border-radius:20px;
+
+    box-shadow:
+    0px 4px 20px rgba(0,0,0,0.3);
+
+    margin-top:20px;
+    margin-bottom:20px;
+
+    }
+
+    .insight-card h3{
+    color:#38bdf8;
+    }
+
+    .insight-card li{
+    font-size:18px;
+    padding:5px;
+    }
+
 
     </style>
     """,
@@ -57,6 +86,10 @@ st.markdown(
 df = pd.read_csv(
     "Data/final_nassau_dashboard_data.csv"
 )
+df['Order Date'] = pd.to_datetime(
+    df['Order Date']
+)
+
 
 # CONVERT DATA COLUMN
 
@@ -181,7 +214,7 @@ total_units = filtered_df['Units'].sum()
 # KPI CARDS
 
 st.subheader(
-    "## 📌 Business Performance Overview "
+    " 📌 Business Performance Overview "
 )
 
 col1, col2, col3, col4 = st.columns(4)
@@ -205,7 +238,119 @@ with col4:
     st.metric(
         " 📦Units ",
         f"{total_units:,}"
-    )        
+    )  
+st.markdown(
+"""
+<div class="insight-card">
+
+<h3> 💡Executive Summary</h3>
+
+<ul>
+<li> 📈Revenue & profitibality performance tracked aross all the product divisions.</li>
+
+<li> 🏆The products whose performance is of top levels were identified using profit contribution.</li>
+
+<li> ⚠️The products which needs pricing optimization were identified using Margin risk analysis.</li>
+
+</ul>
+
+</div>
+""",
+unsafe_allow_html=True
+)    
+
+# MONTHLY REVENUE & PROFIT TREND
+st.divider()
+
+st.subheader(" 📈Monthly Rervenue & Profit Trend Analysis ")
+
+monthly_trend = (
+    filtered_df.groupby(
+        filtered_df['Order Date'].dt.to_period('M')
+    )
+    .agg(
+        Revenue=('Sales','sum'),
+        Profit=('Gross Profit','sum')
+    )
+    .reset_index()
+)
+
+monthly_trend['Order Date'] = (
+    monthly_trend['Order Date']
+    .astype(str)
+)
+
+fig_trend = px.line(
+    monthly_trend,
+    x="Order Date",
+    y=["Revenue","Profit"],
+    markers=True,
+    title=" 📈Monthly Revenue vs Profit Trend "
+)
+
+fig_trend.update_layout(
+    height=500,
+    title_x=0.25,
+    plot_bgcolor="rgba(0,0,0,0)",
+    paper_bgcolor="rgba(0,0,0,0)",
+    hovermode="x unified",
+
+    xaxis_title="Business Month",
+    yaxis_title="Amount ($)",
+
+
+    legend_title_text="Metric"
+)
+
+fig_trend.update_traces(
+    line=dict(width=4)
+)
+
+
+st.plotly_chart(
+    fig_trend,
+    use_container_width=True
+)
+
+# DIVISION CONTRIBUTION DONUT CHART
+
+st.divider()
+
+st.subheader(" 🍩Division Revenue Contribution Analysis ")
+
+division_share = (
+    filtered_df.groupby(
+        'Division',
+        as_index=False
+    )
+    .agg(
+        Revenue=('Sales','sum')
+    )
+)
+
+fig_donut = px.pie(
+    division_share,
+    names="Division",
+    values="Revenue",
+    hole=0.55,
+    title="Revenue Share by Product Division"
+)
+
+fig_donut.update_layout(
+    height=450,
+    title_x=0.3,
+    showlegend=True
+)
+
+fig_donut.update_traces(
+    textposition="inside",
+    textinfo="percent+label"
+)
+
+st.plotly_chart(
+    fig_donut,
+    use_container_width=True
+)
 
 # DIVISION PERFORMANCE ANALYSIS
 
@@ -242,8 +387,10 @@ fig_division = px.bar(
 
 fig_division.update_layout(
     height=450,
+    title_x=0.25,
     xaxis_title="Product Division",
-    yaxis_title="Amount ($)"
+    yaxis_title="Amount ($)",
+    legend_title="Financial Metrics"
 )
 
 st.plotly_chart(
@@ -287,6 +434,7 @@ fig_product = px.bar(
 
 fig_product.update_layout(
     height=500,
+    title_x=0.25,
     xaxis_title="Gross Profit ($)",
     yaxis_title="Products"
 )
@@ -313,18 +461,48 @@ fig_cost_margin = px.scatter(
         "Division",
         "Gross Margin %"
     ],
-    title=" 🚩Cost vs Sales  Margin Diagnotics ",
+    title=" 🚩Cost vs Sales  Margin Diagnostics ",
     template="plotly_white"
 )
 
 fig_cost_margin.update_layout(
     height=500,
-    xaxis_title="Manfacturing Cost",
-    yaxis_title="Sales Revenue"
+    title_x=0.25,
+    xaxis_title="Manufacturing Cost",
+    yaxis_title="Sales Revenue",
+    legend_title="Margin Risk"
 )
 
 st.plotly_chart(
     fig_cost_margin,
+    use_container_width=True
+)
+
+# PRODUCT MARGIN DISTRIBUTION
+
+st.divider()
+
+st.subheader(" 📊Product Margin Health Distribution ")
+
+fig_margin_dist = px.histogram(
+    filtered_df,
+    x="Gross Margin %",
+    nbins=25,
+    title=" 📊Distribution of Product Profit Margins ",
+    template="plotly_white"
+)
+
+fig_margin_dist.update_layout(
+    height=500,
+    title_x=0.25,
+    xaxis_title="Gross Margin (%)",
+    yaxis_title="Number of Products",
+    bargap=0.15,
+    legend_title="Margin Category"
+)
+
+st.plotly_chart(
+    fig_margin_dist,
     use_container_width=True
 )
 
@@ -365,6 +543,7 @@ fig_pareto = px.line(
 
 fig_pareto.update_layout(
     height=450,
+    title_x=0.25,
     xaxis_title="Products",
     yaxis_title="Cumulative Profit %"
 )
