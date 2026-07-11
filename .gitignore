@@ -15,3 +15,5 @@ __pycache__/
 .DS_Store
 #Ignore editable Word reports
 Reports/*.docx
+~$*.docx
+**/~$*.docx
