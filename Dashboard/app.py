@@ -246,7 +246,7 @@ st.markdown(
 <h3> 💡Executive Summary</h3>
 
 <ul>
-<li> 📈Revenue & profitibality performance tracked aross all the product divisions.</li>
+<li> 📈Revenue & profitibality performance tracked across all the product divisions.</li>
 
 <li> 🏆The products whose performance is of top levels were identified using profit contribution.</li>
 
