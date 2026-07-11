@@ -262,7 +262,7 @@ unsafe_allow_html=True
 # MONTHLY REVENUE & PROFIT TREND
 st.divider()
 
-st.subheader(" 📈Monthly Rervenue & Profit Trend Analysis ")
+st.subheader(" 📈Monthly Revenue & Profit Trend Analysis ")
 
 monthly_trend = (
     filtered_df.groupby(
