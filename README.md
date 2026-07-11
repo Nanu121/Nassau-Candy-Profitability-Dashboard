@@ -30,10 +30,13 @@ The goal of this project is to identify:
 
 - Python
 - Pandas
-- Plotly
+- Plotly Express
 - Streamlit
-- Data Analysis
+- Jupyter Notebook
+- Exploratory Data Analysis (EDA)
+- Data Cleaning and Transformation
 - Business Intelligence
+- Git and GitHub
 
 ---
 
@@ -82,7 +85,39 @@ Identifies products responsible for the majority of profit contribution.
 - Optimize product portfolio
 - Improve inventory decisions
 
+### Monthly Revenue and Profit Trend
 
+Analyzes monthly revenue and gross profit performance to identify time-based sales and profitability patterns.
+
+### Division Revenue Contribution
+
+Visualizes the percentage contribution of each product division to overall revenue and highlights dominant business segments.
+
+### Product Margin Health Distribution
+
+Classifies products based on margin performance to identify high-margin products, moderate-margin products, and margin-risk products.
+
+### Interactive Dashboard Filters
+
+The dashboard provides dynamic filters for:
+
+- Date range
+- Product division
+- Product search
+- Minimum gross margin percentage
+
+All KPI cards and analytical visualizations dynamically update based on the selected filters.
+
+
+---
+
+## 📄 Project Report
+
+A detailed project report covering the business problem, dataset description, methodology, KPI development, exploratory data analysis, dashboard implementation, business insights, recommendations, and future scope is available in the `Reports` folder.
+
+[View Final Project Report](Reports/Nassau_Candy_Product_Profitability_Report%20(1).pdf)
+
+---
 ---
 
 ## Developed By
